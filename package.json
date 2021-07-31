@@ -1,6 +1,6 @@
 {
   "name": "@dashkite/cobalt",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Sane Web Capabilities",
   "keywords": [
     "cryptography",
@@ -28,14 +28,16 @@
     }
   ],
   "main": "build/npm/src/index.js",
+  "main:coffee": "src/index.coffee",
   "files": [
+    "src",
     "build/npm/src"
   ],
   "scripts": {
     "test": "p9k test"
   },
   "dependencies": {
-    "ajv": "^6.12.2",
+    "ajv": "^8.6.2",
     "panda-generics": "^6.0.0",
     "panda-parchment": "^6.0.3",
     "url-template": "^2.0.8"
@@ -46,7 +48,7 @@
     "amen": "^3.0.0",
     "express": "^4.17.1",
     "finalhandler": "^1.1.2",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "panda-9000": "^5.0.0",
     "panda-builder": "^4.0.1",
     "panda-confidential": "^3.0.0",

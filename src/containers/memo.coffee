@@ -1,10 +1,7 @@
 import {isType, areType, fromJSON, toJSON, merge} from "panda-parchment"
-import AJV from "ajv"
-import schema from "../schema/memo"
-
-ajv = new AJV()
 
 Container = (library, confidential) ->
+  {ajv, schema} = library
   {Message, hash, convert} = confidential
 
   class Memo
@@ -28,9 +25,10 @@ Container = (library, confidential) ->
 
     # Compares the memo's contents to a schema.
     validate: ->
-      unless ajv.validate schema, {@integrity, @content, @claim}
-        console.error toJSON ajv.errors, true
-        throw new Error "Unable to create memo: failed validation."
+      if ajv?
+        unless ajv.validate schema.memo, {@integrity, @content, @claim}
+          console.error toJSON ajv.errors, true
+          throw new Error "Unable to create memo: failed validation."
 
     @create: (value) -> new Memo value
 

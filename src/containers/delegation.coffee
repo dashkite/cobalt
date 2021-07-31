@@ -1,10 +1,7 @@
 import {isType, areType, toJSON} from "panda-parchment"
-import AJV from "ajv"
-import schema from "../schema/delegation"
-
-ajv = new AJV()
 
 Container = (library, confidential) ->
+  {ajv, schema} = library
   {Declaration, verify, Message, hash} = confidential
 
   class Delegation
@@ -25,9 +22,10 @@ Container = (library, confidential) ->
       unless Declaration.isType @declaration
         throw new Error "Delegation must be a signature declaration"
 
-      unless ajv.validate schema, @declaration.message.json()
-        console.error toJSON ajv.errors, true
-        throw new Error "Unable to create delegation: failed validation."
+      if ajv?
+        unless ajv.validate schema.delegation, @declaration.message.json()
+          console.error toJSON ajv.errors, true
+          throw new Error "Unable to create delegation: failed validation."
 
     @create: (value) -> new Delegation value
 

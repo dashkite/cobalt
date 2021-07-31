@@ -1,13 +1,10 @@
 import {isType, areType, toJSON} from "panda-parchment"
-import AJV from "ajv"
-import schema from "../schema/claim"
-
-ajv = new AJV()
 
 assert = (predicate, message) ->
   throw new Error "verify failure: #{message}" unless predicate
 
 Container = (library, confidential) ->
+  {ajv, schema} = library
   {verify, Declaration} = confidential
 
   class Claim
@@ -28,9 +25,10 @@ Container = (library, confidential) ->
       unless Declaration.isType @declaration
         throw new Error "Claim must be a signature declaration"
 
-      unless ajv.validate schema, @declaration.message.json()
-        console.error toJSON ajv.errors, true
-        throw new Error "Unable to create claim: failed validation."
+      if ajv?
+        unless ajv.validate schema.claim, @declaration.message.json()
+          console.error toJSON ajv.errors, true
+          throw new Error "Unable to create claim: failed validation."
 
 
     @create: (value) -> new Claim value

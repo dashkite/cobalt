@@ -1,10 +1,7 @@
 import {isType, areType, toJSON} from "panda-parchment"
-import AJV from "ajv"
-import schema from "../schema/grant"
-
-ajv = new AJV()
 
 Container = (library, confidential) ->
+  {ajv, schema} = library
   {Declaration, verify} = confidential
 
   class Grant
@@ -25,9 +22,10 @@ Container = (library, confidential) ->
       unless Declaration.isType @declaration
         throw new Error "Grant must be a signature declaration"
 
-      unless ajv.validate schema, @declaration.message.json()
-        console.error toJSON ajv.errors, true
-        throw new Error "Unable to create grant: failed validation."
+      if ajv?
+        unless ajv.validate schema.grant, @declaration.message.json()
+          console.error toJSON ajv.errors, true
+          throw new Error "Unable to create grant: failed validation."
 
     @create: (value) -> new Grant value
 
