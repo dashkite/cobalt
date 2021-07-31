@@ -41,6 +41,8 @@
     "url-template": "^2.0.8"
   },
   "devDependencies": {
+    "@dashkite/genie": "^0.3.3",
+    "@dashkite/genie-presets": "^0.1.2",
     "amen": "^3.0.0",
     "express": "^4.17.1",
     "finalhandler": "^1.1.2",
