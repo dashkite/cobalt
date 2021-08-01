@@ -1,15 +1,16 @@
-import {toJSON, isObject} from "panda-parchment"
-import Method from "panda-generics"
+import { isObject } from "@dashkite/joy/type"
+import { generic } from "@dashkite/joy/generic"
+import { toJSON } from "../utils"
 
 Issue = (library, confidential) ->
   {Contract, Grant} = library
   {SignatureKeyPair, sign, Message} = confidential
 
-  issue = Method.create
+  issue = generic
     name: "issue"
     description: "Issues a Contract to a claimant."
 
-  Method.define issue,
+  generic issue,
     SignatureKeyPair.isType, isObject,
     (issuerKeyPair, capability) ->
 
@@ -18,8 +19,7 @@ Issue = (library, confidential) ->
         grant: Grant.create sign issuerKeyPair,
           Message.from "utf8", toJSON capability
 
-
-  Method.define issue,
+  generic issue,
     SignatureKeyPair.isType, SignatureKeyPair.areType, isObject,
     (issuerKeyPair, revocationArray, capability) ->
 

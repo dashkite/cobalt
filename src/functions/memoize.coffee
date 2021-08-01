@@ -1,15 +1,18 @@
-import {toJSON, isString, isObject, merge} from "panda-parchment"
-import Method from "panda-generics"
+import { isString, isObject } from "@dashkite/joy/type"
+import { merge } from "@dashkite/joy/object"
+import { generic } from "@dashkite/joy/generic"
+import { toJSON } from "../utils"
 
 Memoize = (library, confidential) ->
   {Memo} = library
   {Message, hash} = confidential
 
-  memoize = Method.create
+  memoize = generic
+
     name: "memoize"
     description: "Issues a Memo to a claimant in place of a grant to be more performantly validated."
 
-  Method.define memoize,
+  generic memoize,
     isString, isObject,
     (secret, content) ->
 

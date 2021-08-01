@@ -1,7 +1,9 @@
 import assert from "assert"
-import {toJSON, clone} from "panda-parchment"
+import { clone } from "@dashkite/joy"
 
-import {confidential as Confidential} from "panda-confidential"
+import { toJSON } from "../../../src/utils"
+
+import { confidential as Confidential } from "panda-confidential"
 import Capability from "../../../src"
 
 confidential = Confidential()
@@ -10,6 +12,7 @@ confidential = Confidential()
   Directory, Contract} = Capability confidential
 
 Test = ->
+  
   # The API has its own signature key pair for issuing capabilites to people
   APIKeyPair = await SignatureKeyPair.create()
 
@@ -50,7 +53,6 @@ Test = ->
 
   # API serializes the directory for transport to alice.
   serializedDirectory = directory.to "utf8"
-
 
   #======================================
 

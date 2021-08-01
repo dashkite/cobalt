@@ -1,15 +1,18 @@
-import {toJSON, isObject, isEmpty, last} from "panda-parchment"
-import Method from "panda-generics"
+import { isObject } from "@dashkite/joy/type"
+import { isEmpty } from "@dashkite/joy/value"
+import { last } from "@dashkite/joy/array"
+import { generic } from "@dashkite/joy/generic"
+import { toJSON } from "../utils"
 
 Delegate = (library, confidential) ->
   {Delegation, Contract} = library
   {SignatureKeyPair, sign, Message, hash} = confidential
 
-  delegate = Method.create
+  delegate = generic
     name: "delegate"
     description: "Delegates a given Grant to a third party claimant."
 
-  Method.define delegate,
+  generic delegate,
     SignatureKeyPair.isType, Contract.isType, isObject,
     (claimantKeyPair, contract, delegation) ->
 
@@ -39,7 +42,7 @@ Delegate = (library, confidential) ->
 
       contract
 
-  Method.define delegate,
+  generic delegate,
     SignatureKeyPair.isType,
     SignatureKeyPair.areType,
     Contract.isType,

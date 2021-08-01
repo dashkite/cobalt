@@ -1,9 +1,10 @@
 import assert from "assert"
-import {toJSON, clone} from "panda-parchment"
+import { clone } from "@dashkite/joy"
+import { toJSON } from "../../../src/utils"
 
 import keyStore from "../../key-store"
 
-import {confidential as Confidential} from "panda-confidential"
+import { confidential as Confidential } from "panda-confidential"
 import Capability from "../../../src"
 
 confidential = Confidential()

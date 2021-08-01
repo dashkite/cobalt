@@ -1,4 +1,6 @@
-import {isType, areType, fromJSON, toJSON, merge} from "panda-parchment"
+import { isType } from "@dashkite/joy/type"
+import { merge } from "@dashkite/joy/object"
+import { toJSON, fromJSON, areType } from "../utils"
 
 Container = (library, confidential) ->
   {ajv, schema} = library

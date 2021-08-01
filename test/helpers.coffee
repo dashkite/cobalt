@@ -1,5 +1,5 @@
-import {resolve} from "path"
-import {exists, mkdirp, rm, write} from "panda-quill"
+import { resolve } from "path"
+import { exists, mkdirp, rm, write } from "panda-quill"
 
 root = resolve "test", "authority-fixture", "revocation"
 

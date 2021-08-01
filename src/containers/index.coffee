@@ -1,4 +1,4 @@
-import {include} from "panda-parchment"
+import { assign as include } from "@dashkite/joy/object"
 import Claim from "./claim"
 import Contract from "./contract"
 import Delegation from "./delegation"

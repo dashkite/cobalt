@@ -1,5 +1,7 @@
-import {isType, areType, fromJSON, toJSON, isEmpty, last} from "panda-parchment"
-import URLTemplate from "url-template"
+import { isType } from "@dashkite/joy/type"
+import { isEmpty } from "@dashkite/joy/value"
+import { last } from "@dashkite/joy/array"
+import { fromJSON, toJSON, areType, URLTemplate } from "../utils"
 
 assert = (predicate, message) ->
   throw new Error "verify failure: #{message}" unless predicate
@@ -42,6 +44,7 @@ Container = (library, confidential) ->
   {Declaration, verify, Message, hash, convert} = confidential
 
   class Contract
+
     constructor: ({@grant, @delegations, @claim}) ->
       @delegations ?= []
       @validate()

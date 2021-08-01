@@ -1,15 +1,17 @@
-import {toJSON, isObject, merge} from "panda-parchment"
-import Method from "panda-generics"
+import { isObject } from "@dashkite/joy/type"
+import { merge } from "@dashkite/joy/object"
+import { toJSON } from "../utils"
+import { generic } from "@dashkite/joy/generic"
 
 Exercise = (library, confidential) ->
   {Claim, Contract, Memo} = library
   {SignatureKeyPair, sign, Message} = confidential
 
-  exercise = Method.create
+  exercise = generic
     name: "exercise"
     description: "Excercises a given Grant to add a Claim to the Contract"
 
-  Method.define exercise,
+  generic exercise,
     SignatureKeyPair.isType, Contract.isType, isObject,
     (claimantKeyPair, contract, parameters) ->
 
@@ -20,7 +22,7 @@ Exercise = (library, confidential) ->
         claim: Claim.create sign claimantKeyPair,
           Message.from "utf8", toJSON claim
 
-  Method.define exercise,
+  generic exercise,
     Memo.isType, isObject,
     (memo, claim) ->
 

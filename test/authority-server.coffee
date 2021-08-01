@@ -1,7 +1,7 @@
-import {resolve} from "path"
+import { resolve } from "path"
 import http from "http"
 import express from "express"
-import {exists, read} from "panda-quill"
+import { exists, read } from "panda-quill"
 
 server = undefined
 
