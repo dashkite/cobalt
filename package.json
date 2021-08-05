@@ -52,7 +52,6 @@
     "@dashkite/assert": "^0.1.3",
     "@dashkite/genie": "^0.5.4",
     "@dashkite/genie-presets": "^0.4.12",
-    "ajv": "^8.6.2",
     "node-fetch": "^2.6.1"
   }
 }
