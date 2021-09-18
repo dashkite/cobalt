@@ -1,4 +1,5 @@
-import {isType, areType, toJSON} from "panda-parchment"
+import { isType } from "@dashkite/joy/type"
+import { toJSON, areType } from "../utils"
 
 assert = (predicate, message) ->
   throw new Error "verify failure: #{message}" unless predicate

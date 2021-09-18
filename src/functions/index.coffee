@@ -1,4 +1,4 @@
-import {include} from "panda-parchment"
+import { assign as include } from "@dashkite/joy/object"
 import bundle from "./bundle"
 import delegate from "./delegate"
 import exercise from "./exercise"

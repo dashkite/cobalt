@@ -1,4 +1,4 @@
-import {isString} from "panda-parchment"
+import { isString } from "@dashkite/joy/type"
 
 assert = (predicate, message) ->
   throw new Error "authorization parse failure: #{message}" unless predicate

@@ -72,7 +72,7 @@ The `Directory` class also has methods to support serialization and hydration.
 
 The API issues a directory containing some grants for Leia with  `issue`, a Cobalt function.  `issue` accepts an array of capability stubs along with the API's and Leia's signing keys. Use key pairs are generated for each capability automatically.
 
-    import {confidential} from "panda-confidential"
+    import { confidential } from "panda-confidential"
     import PandaCapability from "@dashkte/cobalt"
     
     Confidential = confidential()
@@ -116,7 +116,7 @@ In the API, we can use the Confidential interface to ready Leia's directory for 
 
 In Leia's device, she can decrypt and store the directory using the Confidential and Cobalt interfaces. Remember that the directory is secret, ideally not stored by the issuer, and should be encrypted when stored.
 
-    import {confidential} from "panda-confidential"
+    import { confidential } from "panda-confidential"
     import PandaCapability from "@dashkte/cobalt"
     
     Confidential = confidential()

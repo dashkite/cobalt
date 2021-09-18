@@ -1,6 +1,6 @@
-import URLTemplate from "url-template"
-import Method from "panda-generics"
-import {toJSON, isObject, isString} from "panda-parchment"
+import { isString, isObject } from "@dashkite/joy/type"
+import { generic } from "@dashkite/joy/generic"
+import { toJSON, URLTemplate } from "../utils"
 
 assert = (predicate, message) ->
   throw new Error "verify failure: #{message}" unless predicate
@@ -9,11 +9,12 @@ Verify = (library, confidential) ->
 
   {Contract, Memo} = library
 
-  verify = Method.create
+  verify = generic
+
     name: "verify"
     description: "Verify a sealed Contract or Memo against a request."
 
-  Method.define verify, isObject, Contract.isType,
+  generic verify, isObject, Contract.isType,
     (request, contract) ->
 
       # Internal consistency checks.
@@ -35,7 +36,7 @@ Verify = (library, confidential) ->
         "HTTP method does not match claim"
 
 
-  Method.define verify, isObject, Memo.isType, isString,
+  generic verify, isObject, Memo.isType, isString,
     (request, memo, secret) ->
 
       # Internal consistency checks.

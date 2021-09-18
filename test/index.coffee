@@ -1,8 +1,8 @@
-import "source-map-support/register"
-import {print, test, success} from "amen"
-import {sleep} from "panda-parchment"
+import { test, success } from "@dashkite/amen"
+import print from "@dashkite/amen-console"
+import { sleep } from "@dashkite/joy"
 import fetch from "node-fetch"
-import {start, stop} from "./authority-server"
+import { start, stop } from "./authority-server"
 
 global.fetch = fetch
 

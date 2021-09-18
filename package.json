@@ -1,6 +1,6 @@
 {
   "name": "@dashkite/cobalt",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "description": "Sane Web Capabilities",
   "keywords": [
     "cryptography",
@@ -27,30 +27,31 @@
       "email": "david@pandastrike.com"
     }
   ],
-  "main": "build/npm/src/index.js",
-  "main:coffee": "src/index.coffee",
+  "exports": {
+    ".": {
+      "browser": "./build/browser/src/index.js",
+      "node": "./build/node/src/index.js"
+    }
+  },
+  "main": "build/node/src/index.js",
   "files": [
-    "src",
-    "build/npm/src"
+    "build/browser/src",
+    "build/node/src"
   ],
   "scripts": {
-    "test": "p9k test"
+    "test": "genie test"
   },
   "dependencies": {
-    "panda-generics": "^6.0.0",
-    "panda-parchment": "^6.0.3",
-    "url-template": "^2.0.8"
+    "@dashkite/joy": "^0.3.11",
+    "es6-url-template": "^3.0.2",
+    "panda-confidential": "^3.1.0"
   },
   "devDependencies": {
-    "ajv": "^6.12.2",
-    "amen": "^3.0.0",
-    "express": "^4.17.1",
-    "finalhandler": "^1.1.2",
-    "node-fetch": "^2.6.1",
-    "panda-9000": "^5.0.0",
-    "panda-builder": "^4.0.1",
-    "panda-confidential": "^3.0.0",
-    "panda-quill": "^5.0.0",
-    "source-map-support": "^0.5.19"
+    "@dashkite/amen": "^0.1.2",
+    "@dashkite/amen-console": "^0.0.1",
+    "@dashkite/assert": "^0.1.3",
+    "@dashkite/genie": "^0.5.4",
+    "@dashkite/genie-presets": "^0.4.12",
+    "node-fetch": "^2.6.1"
   }
 }

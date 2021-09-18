@@ -1,4 +1,6 @@
-import {isType, areType, include, toJSON, fromJSON, values} from "panda-parchment"
+import { isType } from "@dashkite/joy/type"
+import { assign as include, values } from "@dashkite/joy/object"
+import { toJSON, fromJSON, areType } from "../utils"
 
 Container = (library, confidential) ->
   {Contract} = library
